@@ -1,5 +1,5 @@
 require("configs.autocmds")
 require("configs.options")
 require("configs.mappings")
-require("configs.lazy")
-require("configs.fcitx-helper")
+require("configs.lsp")
+-- require("configs.fcitx-helper")

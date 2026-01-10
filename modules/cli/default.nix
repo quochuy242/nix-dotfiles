@@ -4,7 +4,7 @@
   imports = [
     ./fastfetch
     ./bat
-    ./tmux
+    ./tmux.nix
     ./yazi.nix
     ./lazygit.nix
     ./btop.nix

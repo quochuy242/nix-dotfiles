@@ -14,7 +14,6 @@
     {
       nixpkgs,
       home-manager,
-      nvf,
       ...
     }:
     let
@@ -23,14 +22,14 @@
     {
       homeConfigurations = {
         company = mkHome {
-          inherit nixpkgs home-manager nvf;
+          inherit nixpkgs home-manager;
           user = "huytq1";
           host = "desktop-qc513t6-wsl";
           system = "x86_64-linux";
         };
 
         personal = mkHome {
-          inherit nixpkgs home-manager nvf;
+          inherit nixpkgs home-manager;
           user = "quochuy242";
           host = "my-laptop";
           system = "x86_64-linux";

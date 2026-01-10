@@ -27,7 +27,7 @@
     gco = "git checkout";
     gcob = "git checkout -b";
 
-    hm = "home-manager --";
+    hm = "home-manager";
     ff = "fastfetch";
 
   };

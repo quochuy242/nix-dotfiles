@@ -6,10 +6,9 @@
   };
 
   imports = [
-    ./core.nix
     ./aliases.nix
+    ./core.nix
     ./functions.nix
-    ./fzf.nix
     ./tools.nix
   ];
 }

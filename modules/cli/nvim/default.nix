@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   programs.neovim = {
@@ -7,4 +7,8 @@
   };
 
   xdg.configFile."nvim".source = ./nvim;
+
+  home.packages = with pkgs; [
+    libgcc
+  ];
 }
