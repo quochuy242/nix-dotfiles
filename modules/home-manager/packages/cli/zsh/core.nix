@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.zsh = {
@@ -27,5 +27,20 @@
       "numericglobsort"
       "promptsubst"
     ];
+
+    initContent = ''
+      autoload -U promptinit
+      promptinit
+      prompt pure
+    '';
+
+  };
+
+  programs = {
+    direnv = {
+      enable = true;
+      enableZshIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
+    };
   };
 }

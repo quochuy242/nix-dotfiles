@@ -16,14 +16,19 @@
     nv = "nvim";
     vi = "nvim";
 
+    ga = "git add";
     gaa = "git add .";
     gcm = "git commit";
     gps = "git push";
     gpl = "git pull";
     gst = "git status";
     grt = "git restore";
+    grta = "git restore .";
+    gco = "git checkout";
+    gcob = "git checkout -b";
 
-    hm = "nix run github:nix-community/home-manager --";
+    hm = "home-manager --";
+    ff = "fastfetch";
 
   };
 }

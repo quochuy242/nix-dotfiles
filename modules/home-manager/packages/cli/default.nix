@@ -2,10 +2,15 @@
 
 {
   imports = [
+    ./zsh
     ./fastfetch
     ./bat
     ./tmux
-    ./yazi
+    ./yazi.nix
+    ./git.nix
+    ./lazygit.nix
+    ./btop.nix
+    # ./nvim
   ];
 
   home.packages = with pkgs; [
@@ -14,7 +19,6 @@
     btop
     eza
     fastfetch
-    neovim
     tmux
     yazi
     zsh
