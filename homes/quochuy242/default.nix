@@ -8,10 +8,9 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ../../modules/home-manager/packages
-    ../../modules/home-manager/git.nix
-    ../../modules/home-manager/git/quochuy242.nix
+    ../../modules/home-manager/cli
+    ../../modules/home-manager/git
     ../../modules/home-manager/zsh
-    ../../modules/home-manager/zsh/quochuy242.nix
+    ../../modules/home-manager/gui
   ];
 }

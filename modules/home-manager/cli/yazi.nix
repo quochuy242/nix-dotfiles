@@ -6,7 +6,7 @@
 
     # Optional nhưng nên bật
     enableZshIntegration = true;
-    enableBashIntegration = false;
+    enableBashIntegration = true;
     enableFishIntegration = false;
   };
 

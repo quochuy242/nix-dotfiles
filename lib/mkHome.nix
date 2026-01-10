@@ -7,23 +7,24 @@
 }:
 
 let
-  pkgs = import nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-  };
+  pkgs = nixpkgs.legacyPackages.${system};
 in
 home-manager.lib.homeManagerConfiguration {
   inherit pkgs;
 
   extraSpecialArgs = {
-    inherit user host system;
+    inherit
+      user
+      host
+      system
+      ;
   };
 
   modules = [
     ../homes/${user}
     ../hosts/${host}
-    ../systems/${system}
     ../systems/${system}/${host}
+
     {
       home.username = user;
       home.homeDirectory = "/home/${user}";

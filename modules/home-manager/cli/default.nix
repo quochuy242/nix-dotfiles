@@ -5,7 +5,10 @@
     ./fastfetch
     ./bat
     ./tmux
-    ./yazi
+    ./yazi.nix
+    ./lazygit.nix
+    ./btop.nix
+    ./nvim
   ];
 
   home.packages = with pkgs; [
@@ -14,7 +17,6 @@
     btop
     eza
     fastfetch
-    neovim
     tmux
     yazi
     zsh
