@@ -46,7 +46,10 @@
       settings = {
         options = {
           diagnostics = "nvim_lsp";
-          separator_style = "slant";
+          separator_style = [
+            "|"
+            "|"
+          ];
           show_buffer_close_icons = false;
           show_close_icon = false;
         };
@@ -133,101 +136,62 @@
     # =========================
     # Startup screen
     # =========================
-    plugins.alpha = {
+    plugins.dashboard = {
       enable = true;
-      theme = "dashboard";
-
       settings = {
-        layout = [
-          # Padding top
-          {
-            type = "padding";
-            val = 2;
-          }
-
-          # Header
-          {
-            type = "text";
-            val = [
-              "███╗   ██╗██╗██╗  ██╗██╗   ██╗██╗███╗   ███╗"
-              "████╗  ██║██║╚██╗██╔╝██║   ██║██║████╗ ████║"
-              "██╔██╗ ██║██║ ╚███╔╝ ██║   ██║██║██╔████╔██║"
-              "██║╚██╗██║██║ ██╔██╗ ╚██╗ ██╔╝██║██║╚██╔╝██║"
-              "██║ ╚████║██║██╔╝ ██╗ ╚████╔╝ ██║██║ ╚═╝ ██║"
-              "╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝"
-            ];
-            opts = {
-              position = "center";
-              hl = "Type";
-            };
-          }
-
-          # Padding
-          {
-            type = "padding";
-            val = 2;
-          }
-
-          # Buttons group
-          {
-            type = "group";
-            val = [
-              {
-                type = "button";
-                val = "󰈞  Find file";
-                opts.shortcut = "f";
-                on_press = lib.nixvim.mkRaw "function() vim.cmd('FzfLua files') end";
-              }
-              {
-                type = "button";
-                val = "  Recent files";
-                opts.shortcut = "r";
-                on_press = lib.nixvim.mkRaw "function() vim.cmd('FzfLua oldfiles') end";
-              }
-              {
-                type = "button";
-                val = "󰈬  Live grep";
-                opts.shortcut = "g";
-                on_press = lib.nixvim.mkRaw "function() vim.cmd('FzfLua live_grep') end";
-              }
-              {
-                type = "button";
-                val = "﬘  Buffers";
-                opts.shortcut = "b";
-                on_press = lib.nixvim.mkRaw "function() vim.cmd('FzfLua buffers') end";
-              }
-              {
-                type = "button";
-                val = "  Config (by Nix)";
-                opts.shortcut = "c";
-                on_press =
-                  lib.nixvim.mkRaw "function() vim.cmd('FzfLua files cwd=$HOME/nix-dotfiles') end";
-              }
-              {
-                type = "button";
-                val = "󰅚  Quit";
-                opts.shortcut = "q";
-                on_press = lib.nixvim.mkRaw "function() vim.cmd('qa') end";
-              }
-            ];
-          }
-
-          # Padding bottom
-          {
-            type = "padding";
-            val = 2;
-          }
-
-          # Footer
-          {
-            type = "text";
-            val = "Inspiring quote here.";
-            opts = {
-              position = "center";
-              hl = "Keyword";
-            };
-          }
-        ];
+        change_to_vcs_root = true;
+        config = {
+          footer = [
+            "Made with ❤️"
+          ];
+          header = [
+            "███╗   ██╗██╗██╗  ██╗██╗   ██╗██╗███╗   ███╗"
+            "████╗  ██║██║╚██╗██╔╝██║   ██║██║████╗ ████║"
+            "██╔██╗ ██║██║ ╚███╔╝ ██║   ██║██║██╔████╔██║"
+            "██║╚██╗██║██║ ██╔██╗ ╚██╗ ██╔╝██║██║╚██╔╝██║"
+            "██║ ╚████║██║██╔╝ ██╗ ╚████╔╝ ██║██║ ╚═╝ ██║"
+            "╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝"
+          ];
+          mru = {
+            limit = 20;
+          };
+          project = {
+            enable = false;
+          };
+          shortcut = [
+            {
+              desc = "󰈞  Find file";
+              key = "f";
+              action.__raw = "function() vim.cmd('FzfLua files') end";
+            }
+            {
+              desc = "  Recent files";
+              key = "r";
+              action.__raw = "function() vim.cmd('FzfLua oldfiles') end";
+            }
+            {
+              desc = "󰈬  Live grep";
+              key = "g";
+              action.__raw = "function() vim.cmd('FzfLua live_grep') end";
+            }
+            {
+              desc = "﬘  Buffers";
+              key = "b";
+              action.__raw = "function() vim.cmd('FzfLua buffers') end";
+            }
+            {
+              desc = "  Config (by Nix)";
+              key = "c";
+              action.__raw = "function() vim.cmd('FzfLua files cwd=$HOME/nix-dotfiles') end";
+            }
+            {
+              desc = "󰅚  Quit";
+              key = "q";
+              action.__raw = "function() vim.cmd('qa') end";
+            }
+          ];
+        };
+        theme = "hyper";
       };
     };
 
