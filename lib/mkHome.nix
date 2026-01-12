@@ -4,6 +4,7 @@
   system,
   user,
   host,
+  nixvim
 }:
 
 let
@@ -17,10 +18,13 @@ home-manager.lib.homeManagerConfiguration {
       user
       host
       system
+      nixvim
       ;
   };
 
   modules = [
+    nixvim.homeModules.nixvim
+
     ../homes/${user}
     ../hosts/${host}
     ../systems/${system}/${host}

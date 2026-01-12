@@ -8,7 +8,7 @@
     ./yazi.nix
     ./lazygit.nix
     ./btop.nix
-    ./nvim
+    ./nixvim
   ];
 
   home.packages = with pkgs; [
