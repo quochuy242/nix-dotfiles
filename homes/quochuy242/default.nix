@@ -9,5 +9,6 @@
     ../../modules/git/quochuy242.nix
     ../../modules/zsh
     ../../modules/gui
+    ../../modules/dev
   ];
 }

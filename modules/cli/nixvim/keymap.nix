@@ -153,6 +153,11 @@
         require("conform").format({ async = true })
         vim.cmd("w")
       end
+
+      vim.keymap.set(
+          { "n", "i" }, "<C-s>",
+          function() format_on_save() end, { desc = "Format and save file" }
+      )
     '';
   };
 }

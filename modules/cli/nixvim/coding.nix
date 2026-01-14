@@ -6,21 +6,26 @@
     # LSP
     # =======================
     plugins.lsp = {
-      enable = true; 
+      enable = true;
 
       servers = {
-        # Python 
+        # Python
         basedpyright.enable = true;
 
         # Nix
-        nil_ls = {
+        nixd = {
           enable = true;
-          settings.formatting.command = [ "nixfmt "];
+          settings = {
+            nixpkgs.expr = "import <nixpkgs> {}";
+            formatting = {
+              command = [ "alejandra" ];
+            };
+          };
         };
 
         # Lua
         lua_ls = {
-          enable = true; 
+          enable = true;
           settings = {
             diagnostics.globals = [ "vim" ]; # For neovim config
           };
@@ -29,8 +34,58 @@
         # YAML
         yamlls.enable = true;
 
-        # Markdown 
+        # Markdown
         marksman.enable = true;
+
+        # Go
+        gopls = {
+          enable = true;
+          settings = {
+            gopls = {
+              gofumpt = true;
+              usePlaceholders = true;
+              staticcheck = true;
+            };
+          };
+        };
+
+        # Rust
+        rust_analyzer = {
+          enable = true;
+          installCargo = false;
+          installRustc = false;
+          installRustfmt = false;
+          settings = {
+            cargo.allFeatures = true;
+            checkOnSave = true;
+          };
+        };
+
+        # TOML
+        taplo = {
+          enable = true;
+
+          settings = {
+            evenBetterToml = {
+              enable = true;
+            };
+          };
+        };
+
+        # C & C++
+        clangd = {
+          enable = true;
+          settings = {
+            cmd = [
+              "clangd"
+              "--background-index" # Index big projects
+              "--clang-tidy" # Enable clang-tidy - linting
+              "--completion-style=detailed" # Completion style
+              "--header-insertion=iwyu" # Include what you use
+              "--pch-storage=memory" # Store precompiled headers in memory
+            ];
+          };
+        };
       };
     };
 
@@ -43,15 +98,20 @@
       settings = {
         format_on_save = {
           timeoutMs = 1000;
-          lspFallback = true; 
+          lspFallback = true;
         };
 
         formatters_by_ft = {
           python = [ "ruff" ];
-          nix = [ "nixfmt" ];
+          nix = [ "alejandra" ];
           lua = [ "stylua" ];
           yaml = [ "yamlfmt" ];
           markdown = [ "prettier" ];
+          c = [ "clang_format" ];
+          cpp = [ "clang_format" ];
+          go = [ "gofmt" ];
+          rust = [ "rustfmt" ];
+          toml = [ "taplo" ];
         };
       };
     };
@@ -61,7 +121,7 @@
     # =======================
     plugins = {
       cmp = {
-        enable = true; 
+        enable = true;
         autoEnableSources = true;
 
         settings = {
@@ -74,6 +134,7 @@
           };
           sources = [
             { name = "nvim_lsp"; }
+            { name = "nvim-lsp-signature-help"; }
             { name = "path"; }
             { name = "buffer"; }
             { name = "cmdline"; }
@@ -83,9 +144,10 @@
       };
       luasnip.enable = true;
       cmp-nvim-lsp.enable = true;
+      cmp-nvim-lsp-signature-help.enable = true;
       cmp-path.enable = true;
       cmp-buffer.enable = true;
-      cmp-cmdline.enable = true; 
+      cmp-cmdline.enable = true;
       cmp-treesitter.enable = true;
     };
 
@@ -96,7 +158,7 @@
       enable = true;
       settings = {
         highlight.enable = true;
-        indent.enable = true; 
+        indent.enable = true;
         ensure_installed = [
           "python"
           "yaml"
@@ -104,6 +166,10 @@
           "lua"
           "markdown_inline"
           "nix"
+          "c"
+          "cpp"
+          "rust"
+          "go"
         ];
       };
     };
@@ -168,14 +234,4 @@
       todo-comments.enable = true;
     };
   };
-
-    
-
-  home.packages = with pkgs; [
-    ruff
-    nixfmt
-    stylua
-    prettier
-    yamlfmt
-  ];
 }

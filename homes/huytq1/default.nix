@@ -7,5 +7,6 @@
     ../../modules/cli
     ../../modules/git/huytq1.nix
     ../../modules/zsh
+    ../../modules/dev
   ];
 }

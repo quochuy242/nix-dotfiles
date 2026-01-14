@@ -4,11 +4,18 @@
   system,
   user,
   host,
-  nixvim
+  nixvim,
+  rust-overlay,
 }:
 
 let
-  pkgs = nixpkgs.legacyPackages.${system};
+  pkgs = import nixpkgs {
+    inherit system;
+    overlays = [
+      rust-overlay.overlays.default
+      (import ../overlays/rust.nix)
+    ];
+  };
 in
 home-manager.lib.homeManagerConfiguration {
   inherit pkgs;
@@ -27,6 +34,7 @@ home-manager.lib.homeManagerConfiguration {
 
     ../homes/${user}
     ../hosts/${host}
+    ../systems/${system}
     ../systems/${system}/${host}
 
     {

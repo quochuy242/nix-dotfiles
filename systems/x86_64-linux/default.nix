@@ -23,6 +23,8 @@ in
       pciutils
       usbutils
       xclip
+      nil
+      nixfmt
     ])
     ++ (if isWayland then with pkgs; [ wl-clipboard ] else [ ]);
 }

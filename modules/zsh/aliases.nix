@@ -3,6 +3,7 @@
     ".." = "cd ..";
     "..." = "cd ../..";
     "...." = "cd ../../..";
+    mkd = "mkdir -p";
 
     l = "eza -la --icons --group-directories-first";
     ll = "eza -lha --icons --group-directories-first";

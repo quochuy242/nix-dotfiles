@@ -41,7 +41,10 @@
       # Enable wrap for markdown & text
       {
         event = "FileType";
-        pattern = [ "markdown" "text" ];
+        pattern = [
+          "markdown"
+          "text"
+        ];
         command = "setlocal wrap linebreak";
       }
 
@@ -71,6 +74,28 @@
           '';
         };
       }
+
+      #
+      {
+        event = "FileType";
+        pattern = [
+          "nix"
+          "lua"
+          "javascript"
+          "typescript"
+        ];
+        command = "setlocal tabstop=2 shiftwidth=2 expandtab";
+      }
+
+      {
+        event = "FileType";
+        pattern = [
+          "python"
+        ];
+        command = "setlocal tabstop=4 shiftwidth=4 expandtab";
+      }
+
     ];
   };
 }
+

@@ -62,10 +62,10 @@
     plugins.neo-tree = {
       enable = true;
       settings = {
-        close_if_last_window = true; 
+        close_if_last_window = true;
         filesystem = {
           follow_current_file = {
-            enable = true; 
+            enable = true;
             leave_dirs_open = true;
           };
         };
@@ -97,6 +97,11 @@
       settings = {
         indent.char = "│";
         scope.enabled = false;
+        exclude = {
+          filetypes = [
+            "dashboard"
+          ];
+        };
       };
     };
 
@@ -175,7 +180,7 @@
               action.__raw = "function() vim.cmd('FzfLua live_grep') end";
             }
             {
-              desc = "﬘  Buffers";
+              desc = "  Buffers";
               key = "b";
               action.__raw = "function() vim.cmd('FzfLua buffers') end";
             }
@@ -195,12 +200,11 @@
       };
     };
 
-
     # =========================
     # fzf-lua
     # =========================
     plugins.fzf-lua = {
-      enable = true; 
+      enable = true;
 
       keymaps = {
         "<leader>ff" = {
@@ -232,13 +236,14 @@
           };
           settings = {
             winopts = {
-              preview = { hidden = true; };
+              preview = {
+                hidden = true;
+              };
               height = 0.5;
               width = 0.5;
             };
           };
         };
-
 
         # =========================
         # LSP (rất nên có)

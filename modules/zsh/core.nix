@@ -26,6 +26,8 @@
       "notify"
       "numericglobsort"
       "promptsubst"
+      "extendedglob"
+      "globstarshort"
     ];
 
     initContent = ''

@@ -9,6 +9,7 @@
     ./lazygit.nix
     ./btop.nix
     ./nixvim
+    ./direnv.nix
   ];
 
   home.packages = with pkgs; [
@@ -20,5 +21,7 @@
     tmux
     yazi
     zsh
+    nix-direnv
+    direnv
   ];
 }
